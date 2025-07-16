@@ -17,6 +17,18 @@
       background-position: center;
       color: #fff;
       text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 🔥 LAYER OVERLAY TRANSPARAN DI ATAS BACKGROUND */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6); /* bisa diubah ke 0.5/0.7 sesuai keinginan */
+      z-index: 0;
     }
 
     .splash {
