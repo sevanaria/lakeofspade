@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lake of Spade</title>
+  <title>For Deuce, Who Came From The Twisted Wonderland and Saved Me</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
   <style>
     body {
@@ -63,17 +63,17 @@
 </head>
 <body>
 
-  <div class="splash" onclick="showContent()">
-    🏞♠️
-  </div>
+ <div class="splash splash-animate-in" onclick="showContent()">
+  🏞♠️
+</div>
 
   <div id="mainContent" class="hidden">
-    <div class="header">Sevan Ataraxia × Deuce Spade</div>
+    <div class="header">For Deuce Spade,</div>
+    <div class="subheader">May happiness always find its way to you.</div> 
     <div class="description">
-      Di balik danau sepi yang dijaga kabut abadi, mereka bertemu.  
-      Bukan karena kebetulan, tapi karena keberanian untuk melangkah ke dunia yang tak mereka kenal.  
+      Breaking my prison, just to catch your light.    
       <br><br>
-      “Jika hatimu bagaikan danau yang tak pernah tenang, maka izinkan aku menjadi langit yang memantulkan cahayanya.” 💚💙
+      And now, I'm captivated by your kindness.
     </div>
     <div class="image-container">
       <img src="sevan.jpg" alt="Sevan Ataraxia" />
@@ -82,9 +82,16 @@
   </div>
 
   <script>
-    function showContent() {
-      document.querySelector('.splash').classList.add('hidden');
-      document.getElementById('mainContent').classList.remove('hidden');
+   function showContent() {
+  const splash = document.querySelector('.splash');
+  splash.classList.remove('splash-animate-in');
+  splash.classList.add('splash-animate-out');
+
+  setTimeout(() => {
+    splash.classList.add('hidden');
+    document.getElementById('mainContent').classList.remove('hidden');
+  }, 800); // waktu sesuai durasi fadeOut
+}
     }
   </script>
 </body>
