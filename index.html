@@ -8,6 +8,8 @@
   <style>
     body {
       font-family: 'Playfair Display', Merriweather, serif;
+      margin: 0;
+      padding: 0;
       background-image: url('a-fresh-water-lake-of-sevan.jpg');
       background-size: cover;
       background-repeat: no-repeat;
@@ -15,23 +17,42 @@
       background-position: center;
       color: #fff;
       text-align: center;
-      padding: 2em;
     }
-    .header {
+
+    .splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 4em;
+      z-index: 9999;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .header { 
       font-size: 2.5em;
       color: #B5FFEB;
-      margin-bottom: 0.5em;
+      margin-top: 2em;
       text-shadow: 1px 1px 5px #001f3d;
     }
+
     .description {
       max-width: 700px;
-      margin: 0 auto 2em;
+      margin: 2em auto;
       font-size: 1.2em;
       background-color: rgba(0, 0, 0, 0.4);
       padding: 1.2em;
       border-radius: 15px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
+
     .image-container img {
       width: 220px;
       margin: 10px;
@@ -41,16 +62,30 @@
   </style>
 </head>
 <body>
-  <div class="header">Sevan Ataraxia × Deuce Spade</div>
-  <div class="description">
-    Di balik danau sepi yang dijaga kabut abadi, mereka bertemu.  
-    Bukan karena kebetulan, tapi karena keberanian untuk melangkah ke dunia yang tak mereka kenal.  
-    <br><br>
-    “Jika hatimu bagaikan danau yang tak pernah tenang, maka izinkan aku menjadi langit yang memantulkan cahayanya.” 💚💙
+
+  <div class="splash" onclick="showContent()">
+    🏞♠️
   </div>
-  <div class="image-container">
-    <img src="sevan.jpg" alt="Sevan Ataraxia" />
-    <img src="deuce.jpg" alt="Deuce Spade" />
+
+  <div id="mainContent" class="hidden">
+    <div class="header">Sevan Ataraxia × Deuce Spade</div>
+    <div class="description">
+      Di balik danau sepi yang dijaga kabut abadi, mereka bertemu.  
+      Bukan karena kebetulan, tapi karena keberanian untuk melangkah ke dunia yang tak mereka kenal.  
+      <br><br>
+      “Jika hatimu bagaikan danau yang tak pernah tenang, maka izinkan aku menjadi langit yang memantulkan cahayanya.” 💚💙
+    </div>
+    <div class="image-container">
+      <img src="sevan.jpg" alt="Sevan Ataraxia" />
+      <img src="deuce.jpg" alt="Deuce Spade" />
+    </div>
   </div>
+
+  <script>
+    function showContent() {
+      document.querySelector('.splash').classList.add('hidden');
+      document.getElementById('mainContent').classList.remove('hidden');
+    }
+  </script>
 </body>
 </html>
