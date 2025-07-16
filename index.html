@@ -10,25 +10,11 @@
       font-family: 'Playfair Display', Merriweather, serif;
       margin: 0;
       padding: 0;
-      background-image: url('Card_Deuce_SSR_Starsending_Robes.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-position: center;
+      background-color: #3895D3;
       color: #fff;
       text-align: center;
       position: relative;
-      z-index: 1;
-    }
-
-    /* 🔥 LAYER OVERLAY TRANSPARAN DI ATAS BACKGROUND */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.6); /* bisa diubah ke 0.5/0.7 sesuai keinginan */
-      z-index: 0;
+      overflow-x: hidden;
     }
 
     .splash {
@@ -65,45 +51,49 @@
       max-width: 700px;
       margin: 2em auto;
       font-size: 1.2em;
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.2);
       padding: 1.2em;
       border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
 
-    .image-container img {
-      width: 220px;
-      margin: 10px;
+    .polaroid {
+      width: 40vw;
+      max-width: 250px;
+      margin-top: 1em;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInUp 2s ease-out forwards;
+      animation-delay: 1s;
     }
 
-    @keyframes fadeInZoom {
+    @keyframes fadeInUp {
       0% {
         opacity: 0;
-        transform: scale(0.8);
+        transform: translateY(50px);
       }
       100% {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0);
       }
     }
 
-    @keyframes fadeOut {
-      0% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
+    /* ⭐ BLING BLING STARS */
+    .star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0;
+      animation: blink 2s infinite ease-in-out;
     }
 
-    .splash-animate-in {
-      animation: fadeInZoom 1s ease-out forwards;
-    }
-
-    .splash-animate-out {
-      animation: fadeOut 0.8s ease-in forwards;
+    @keyframes blink {
+      0%, 100% { opacity: 0; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
     }
   </style>
 </head>
@@ -121,10 +111,12 @@
       <br><br>
       And now, I'm captivated by your kindness.
     </div>
-    <div class="image-container">
-      <img src="sevan.jpg" alt="Sevan Ataraxia" />
-      <img src="deuce.jpg" alt="Deuce Spade" />
-    </div>
+
+    <!-- Foto Deuce muncul setelah deskripsi -->
+    <img src="deuce.jpg" alt="Deuce Spade" class="polaroid" />
+
+    <!-- Bling bling stars -->
+    <div id="stars-container"></div>
   </div>
 
   <script>
@@ -136,7 +128,21 @@
       setTimeout(() => {
         splash.classList.add('hidden');
         document.getElementById('mainContent').classList.remove('hidden');
+        spawnStars(); // munculkan bintang setelah splash hilang
       }, 800);
+    }
+
+    // ✨ Blink-blink bintang
+    function spawnStars() {
+      const container = document.getElementById('stars-container');
+      for (let i = 0; i < 40; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(star);
+      }
     }
   </script>
 
