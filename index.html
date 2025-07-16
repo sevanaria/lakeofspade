@@ -43,6 +43,12 @@
       text-shadow: 1px 1px 5px #001f3d;
     }
 
+    .subheader {
+      font-size: 1.5em;
+      color: #DFF;
+      margin-bottom: 1em;
+    }
+
     .description {
       max-width: 700px;
       margin: 2em auto;
@@ -59,13 +65,41 @@
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     }
+
+    @keyframes fadeInZoom {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .splash-animate-in {
+      animation: fadeInZoom 1s ease-out forwards;
+    }
+
+    .splash-animate-out {
+      animation: fadeOut 0.8s ease-in forwards;
+    }
   </style>
 </head>
 <body>
 
- <div class="splash splash-animate-in" onclick="showContent()">
-  🏞♠️
-</div>
+  <div class="splash splash-animate-in" onclick="showContent()">
+    🏞♠️
+  </div>
 
   <div id="mainContent" class="hidden">
     <div class="header">For Deuce Spade,</div>
@@ -82,17 +116,17 @@
   </div>
 
   <script>
-   function showContent() {
-  const splash = document.querySelector('.splash');
-  splash.classList.remove('splash-animate-in');
-  splash.classList.add('splash-animate-out');
+    function showContent() {
+      const splash = document.querySelector('.splash');
+      splash.classList.remove('splash-animate-in');
+      splash.classList.add('splash-animate-out');
 
-  setTimeout(() => {
-    splash.classList.add('hidden');
-    document.getElementById('mainContent').classList.remove('hidden');
-  }, 800); // waktu sesuai durasi fadeOut
-}
+      setTimeout(() => {
+        splash.classList.add('hidden');
+        document.getElementById('mainContent').classList.remove('hidden');
+      }, 800);
     }
   </script>
+
 </body>
 </html>
